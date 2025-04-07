@@ -19,4 +19,17 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<>(MainActivity.class);
 
+    @Test
+    public void enter123_ChangeTextButton_Shows123() {
+        onView(withId(R.id.editTextUserInput)).perform(typeText("123"), closeSoftKeyboard());
+        onView(withId(R.id.changeTextBt)).perform(click());
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("123")));
+    }
+
+    @Test
+    public void enter123_OpenActivity_Shows123InNewActivity() {
+        onView(withId(R.id.editTextUserInput)).perform(typeText("123"), closeSoftKeyboard());
+        onView(withId(R.id.activityChangeTextBtn)).perform(click());
+        onView(withId(R.id.show_text_view)).check(matches(withText("123")));
+    }
 }
