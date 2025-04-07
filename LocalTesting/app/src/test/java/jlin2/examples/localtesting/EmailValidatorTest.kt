@@ -19,6 +19,24 @@ class EmailValidatorTest {
         val email = "123@abc.co.ca"
         assertTrue(EmailValidator.isValidEmail(email))
     }
+    @Test
+    fun invalidEmail_IncorrectDomain_ReturnsFalse() {
+        val email = "123@abc"
+        assertFalse(EmailValidator.isValidEmail(email))
+    }
+
+    @Test
+    fun invalidEmail_DoubleDots_ReturnsFalse() {
+        val email = "123@abc..com"
+        assertFalse(EmailValidator.isValidEmail(email))
+    }
+
+    @Test
+    fun invalidEmail_MissingUsername_ReturnsFalse() {
+        val email = "@abc.com"
+        assertFalse(EmailValidator.isValidEmail(email))
+    }
+
 
 
 }
