@@ -36,7 +36,23 @@ class EmailValidatorTest {
         val email = "@abc.com"
         assertFalse(EmailValidator.isValidEmail(email))
     }
+    @Test
+    fun invalidEmail_NoDomain_ReturnsFalse() {
+        val email = "testing123"
+        assertFalse(EmailValidator.isValidEmail(email))
+    }
 
+    @Test
+    fun invalidEmail_EmptyString_ReturnsFalse() {
+        val email = ""
+        assertFalse(EmailValidator.isValidEmail(email))
+    }
+
+    @Test
+    fun invalidEmail_Null_ReturnsFalse() {
+        val email: CharSequence? = null
+        assertFalse(EmailValidator.isValidEmail(email))
+    }
 
 
 }
