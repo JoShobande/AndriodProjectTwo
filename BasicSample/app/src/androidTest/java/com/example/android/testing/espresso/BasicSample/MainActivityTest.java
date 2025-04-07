@@ -19,4 +19,17 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<>(MainActivity.class);
 
+    @Test
+    public void emptyInput_ChangeTextButton_ShowsEmpty() {
+        onView(withId(R.id.editTextUserInput)).perform(clearText(), closeSoftKeyboard());
+        onView(withId(R.id.changeTextBt)).perform(click());
+        onView(withId(R.id.textToBeChanged)).check(matches(withText("")));
+    }
+
+    @Test
+    public void emptyInput_OpenActivity_ShowsEmptyInNewActivity() {
+        onView(withId(R.id.editTextUserInput)).perform(clearText(), closeSoftKeyboard());
+        onView(withId(R.id.activityChangeTextBtn)).perform(click());
+        onView(withId(R.id.show_text_view)).check(matches(withText("")));
+    }
 }
