@@ -8,3 +8,8 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+dependencies {
+    testImplementation 'org.conscrypt:conscrypt-android:2.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+}
